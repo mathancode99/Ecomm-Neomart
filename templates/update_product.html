@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+    
+        <label for="product_name">Product Name</label><br>
+        <input type="text" placeholder="Enter Product Name" required name="name" value="{{ product.product_name }}"> <br><br>
+    
+        <label for="price">Price</label><br>
+        <input type="number" placeholder="Enter Product Price" required name="price" value="{{ product.price }}"><br><br>
+    
+        <label for="stock">Stock</label><br>
+        <input type="number" placeholder="Enter Available Stock" required name="stock" value="{{ product.stock }}"><br><br>
+    
+        <label for="category">Category</label><br>
+        <input type="text" placeholder="Enter Product Category" required name="category" value="{{ product.category }}"><br><br>
+    
+        <label for="description">Description</label><br>
+        <textarea placeholder="Enter Product Description" required name="description">{{ product.description }}</textarea><br><br>
+    
+        <label for="Image">Product Image</label><br>
+        <input type="file" name="image"><br>
+        {% if product.image %}
+            <img src="{{ product.image.url }}" alt="Product Image" width="100"><br><br>
+        {% endif %}
+    
+        <button type="submit">Update Product</button>
+        <button type="reset">Reset</button>
+    </form>
+    
+
+
+
+</body>
+</html>

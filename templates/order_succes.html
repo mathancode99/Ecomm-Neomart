@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Success</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    /* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f6f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Success Message Box */
+.container {
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Success Icon */
+.success-icon {
+    font-size: 60px;
+    color: #27ae60;
+    margin-bottom: 15px;
+}
+
+/* Headings */
+h1 {
+    font-size: 28px;
+    color: #2c3e50;
+}
+
+h2 {
+    font-size: 24px;
+    color: #16a085;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 18px;
+    color: #7f8c8d;
+    margin-bottom: 20px;
+}
+
+/* Back to Home Button */
+a {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 16px;
+    text-decoration: none;
+    color: white;
+    background: #3498db;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+a:hover {
+    background: #217dbb;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 500px) {
+    .container {
+        width: 90%;
+        padding: 30px;
+    }
+
+    h1 {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+
+</style>
+<body>
+    <div class="container">
+        <i class="fas fa-check-circle success-icon"></i>
+        <h1>Success</h1>
+        <h2>Thank You!</h2>
+        <p>Your order has been placed successfully.</p>
+        <a href="{% url 'user_panel' %}">Back to Home</a>
+    </div>
+</body>
+</html>

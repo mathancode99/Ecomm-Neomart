@@ -1,0 +1,54 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel ="stylesheet" href ="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="sign_up">
+
+ 
+<form class="container" class="form1" action="{% url 'signup' %}" method="POST">
+    {% csrf_token %}
+    <div class="card">
+        <a class="singup">Sign Up</a>
+
+        <div class="inputBox">
+            <input  type="text" name="username" required="required">
+            <span>Username</span>
+        </div>
+
+
+        <div class="inputBox1">
+            <input type="email" name="email" required="required">
+            <span class="user">Email</span>
+        </div>
+
+        
+        <div class="radio">
+            <input type="radio"  name="role" value="customer" id="cus"><label for="cus">CUSTOMER</label>
+            <input type="radio"  name="role" value="seller" id="sell"><label for="sell">SELLER</label>
+        </div>
+
+        <div class="inputBox">
+            <input  type="text" name="password1" required="required">
+            <span>Password</span>
+        </div>
+
+        <div class="inputBox">
+            <input  type="text" name="password2"required="required">
+            <span>Password</span>
+        </div>
+
+        <button class="enter" type="submit">submit</button>
+
+    </div>
+</form>
+
+</div>
+</body>
+</html>

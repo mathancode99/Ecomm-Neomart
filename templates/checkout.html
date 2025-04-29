@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Checkout</h2>
+
+    <!-- Show product details -->
+    <p>Product: {{ product.product_name }}</p>
+    <p>Price per unit: ₹{{ product.price }}</p>
+    <p>Quantity: {{ quantity }}</p>
+    <p>Total Price: ₹{{ total_price }}</p>
+    
+    <!-- Address Selection -->
+    <form action="{% url 'place_order' %}" method="POST" onsubmit="return checkAddress()">
+        {% csrf_token %}
+        <input type="hidden" name="product_id" value="{{ product.id }}">
+        <input type="hidden" name="quantity" value="{{ quantity }}">
+        <input type="hidden" name="total_price" value="{{ total_price }}">
+    
+        {% if addresses %}
+        <h3>Select a Shipping Address</h3>
+        {% for address in addresses %}
+            <input type="radio" name="selected_address" value="{{ address.id }}" onclick="toggleAddressForm(false)">
+            <label>{{ address.full_name }}, {{ address.address }}, {{ address.city }}, {{ address.zip_code }}</label><br>
+        {% endfor %}
+        
+        <!-- Option to add a new address -->
+        <input type="radio" name="selected_address" value="new" onclick="toggleAddressForm(true)">
+        <label>Add a New Address</label><br>
+        {% endif %}
+    
+        <!-- New Address Form (Initially Hidden if Addresses Exist) -->
+        <div id="new-address-form" {% if addresses %}style="display: none;"{% endif %}>
+            <h3>{% if addresses %}Or{% endif %} Add a New Address</h3>
+            <input type="text" id="full_name" name="full_name" placeholder="Full Name"><br>
+            <input type="text" id="phone" name="phone" placeholder="Phone"><br>
+            <textarea id="address" name="address" placeholder="Address"></textarea><br>
+            <input type="text" id="city" name="city" placeholder="City"><br>
+            <input type="text" id="state" name="state" placeholder="State"><br>
+            <input type="text" id="zip_code" name="zip_code" placeholder="Zip Code"><br>
+            <input type="text" id="country" name="country" placeholder="Country"><br>
+        </div>
+    
+        <button type="submit">Proceed to Payment</button>
+    </form>
+    
+
+<script>
+    function toggleAddressForm(show) {
+        var form = document.getElementById("new-address-form");
+
+        if (show) {
+            form.style.display = "block"; // Show new address form
+            setRequiredFields(true);
+        } else {
+            form.style.display = "none"; // Hide new address form
+            setRequiredFields(false);
+        }
+    }
+
+    function setRequiredFields(required) {
+        document.getElementById("full_name").required = required;
+        document.getElementById("phone").required = required;
+        document.getElementById("address").required = required;
+        document.getElementById("city").required = required;
+        document.getElementById("state").required = required;
+        document.getElementById("zip_code").required = required;
+        document.getElementById("country").required = required;
+    }
+</script>
+
+
+    
+</body>
+</html>

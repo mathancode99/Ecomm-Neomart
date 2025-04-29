@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for item in order_items %}
+    <p>Product: {{ item.product.name }}</p>
+    <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" height="150px" width="150" style="object-fit: contain;">
+    <p>Quantity: {{ item.quantity }}</p>
+    <p>Price: {{ item.price }}</p>
+    <hr>
+{% empty %}
+    <p>No orders placed yet.</p>
+{% endfor %}
+</body>
+</html>
