@@ -3,14 +3,13 @@ services:
     name: ecomm-neomart
     env: python
     buildCommand: "./build.sh"
-    startCommand: "gunicorn Demo.wsgi"
+    startCommand: "gunicorn Demo.wsgi:application"
     envVars:
-      - key: DJANGO_SETTINGS_MODULE
-        value: Demo.settings
       - key: DATABASE_URL
-        sync: false
+        fromDatabase:
+          name: neomart
+          property: connectionString
       - key: SECRET_KEY
-        sync: false
+        value: Mathan2306
       - key: ALLOWED_HOSTS
         value: ecomm-neomart.onrender.com
-
