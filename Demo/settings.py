@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-)@91nmh-$w@q7x!*it9yhw6w^7)l3@ke_gjnp*ma!9h^8)&9r-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['ecomm-neomart.onrender.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
