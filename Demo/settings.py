@@ -78,16 +78,29 @@ WSGI_APPLICATION = 'Demo.wsgi.application'
 
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'demowork',
+# 		'USER': 'postgres',
+#         'PASSWORD': 'Mathan',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
+
+
+import dj_database_url
+import os
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'demowork',
-		'USER': 'postgres',
-        'PASSWORD': 'Mathan',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
+    'default': dj_database_url.config(
+        default=os.environ.get('postgresql://neomart_user:OjAc2wFpaCM7FYH3WoD8vshrA3QfiGhd@dpg-d08f9ivdiees739a3nkg-a/neomart')
+    )
 }
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
